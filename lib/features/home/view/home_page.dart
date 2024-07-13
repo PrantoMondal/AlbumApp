@@ -20,13 +20,16 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    super.initState();
     final provider = Provider.of<AlbumsProvider>(context, listen: false);
+
+    // Fetch initial data from API when the widget is initialized.
     provider.getDataFromAPI();
 
+    // search text field changes.
     _searchController.addListener(() {
       filterAlbums();
     });
+    super.initState();
   }
 
   @override
@@ -35,6 +38,7 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
+  // Filters the list of albums based on the search text.
   void filterAlbums() {
     final provider = Provider.of<AlbumsProvider>(context, listen: false);
     String query = _searchController.text.toLowerCase();
@@ -48,6 +52,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<AlbumsProvider>(context);
+    // Initialize filtered albums list when search field is empty.
     if (_searchController.text.isEmpty) {
       _filteredAlbums = provider.albumList.albums;
     }
@@ -81,6 +86,7 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
+              // Search TextField visible/invisible
               !isVisible
                   ? const SizedBox()
                   : TextField(
@@ -102,6 +108,8 @@ class _HomePageState extends State<HomePage> {
                     : ListView.builder(
                         itemCount: _filteredAlbums.length,
                         itemBuilder: (context, index) {
+                          // ListTile for each album,  on tap => PhotoPage.
+
                           return GestureDetector(
                             onTap: () {
                               Navigator.push(

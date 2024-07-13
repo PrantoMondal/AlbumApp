@@ -8,20 +8,21 @@ class AlbumsProvider extends ChangeNotifier {
   bool isLoading = true;
   String error = '';
   AlbumList albumList = AlbumList(albums: []);
-  AlbumList serachedAlbum = AlbumList(albums: []);
-  String searchText = '';
+
   getDataFromAPI() async {
     try {
       Response response = await http.get(Uri.parse(API.album_api));
       if (response.statusCode == 200) {
+        // Check if request was successful (status code 200) and, Parse JSON response body into AlbumList using generated model function
         albumList = albumsFromJson(response.body);
-        notifyListeners();
+        notifyListeners(); // Notify listeners of changes in data
       } else {
         error = response.statusCode.toString();
+        // Set error message with HTTP status code if request fails
       }
     } catch (e) {
       error = e.toString();
     }
-    isLoading = false;
+    isLoading = false; // Update isLoading flag
   }
 }

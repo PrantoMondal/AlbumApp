@@ -18,8 +18,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => AlbumsProvider()),
-        ChangeNotifierProvider(create: (context) => PhotosProvider()),
+        ChangeNotifierProvider(
+            create: (context) =>
+                AlbumsProvider()), // Provides the AlbumsProvider to manage album data.
+        ChangeNotifierProvider(
+            create: (context) =>
+                PhotosProvider()), // Provides the PhotosProvider to manage photo data.
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

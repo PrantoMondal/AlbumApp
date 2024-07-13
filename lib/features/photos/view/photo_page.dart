@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class PhotoPage extends StatefulWidget {
-  final int id;
+  final int id; //The ID of the album for which photos will be displayed.
   // static const String routeName = '/photos';
   const PhotoPage({super.key, required this.id});
 
@@ -16,7 +16,10 @@ class _PhotoPageState extends State<PhotoPage> {
   @override
   void initState() {
     final provider = Provider.of<PhotosProvider>(context, listen: false);
+
+    // Fetch photos from API for the specified album ID when the widget is initialized.
     provider.getPhotoFromAPI(id: widget.id);
+
     super.initState();
   }
 
@@ -28,7 +31,8 @@ class _PhotoPageState extends State<PhotoPage> {
         centerTitle: true,
         backgroundColor: const Color.fromRGBO(125, 125, 209, 1.0),
         title: Text(
-          "Album Id: ${provider.photoList.photos[widget.id].albumId}",
+          // Display the album ID in the app bar title.
+          "Album Id: ${provider.isLoading ? 0 : provider.photoList.photos[widget.id].albumId}",
           style: const TextStyle(fontSize: 30),
         ),
       ),
@@ -57,6 +61,7 @@ class _PhotoPageState extends State<PhotoPage> {
                             },
                             child: ListTile(
                               leading: Hero(
+                                //hero is used for animation
                                 tag: "image",
                                 child: SizedBox(
                                   height: 50,

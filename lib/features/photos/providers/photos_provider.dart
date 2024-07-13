@@ -8,20 +8,22 @@ import 'package:http/http.dart' as http;
 class PhotosProvider extends ChangeNotifier {
   bool isLoading = true;
   String error = '';
+  // List of photos fetched from the API.
   PhotoList photoList = PhotoList(photos: []);
   getPhotoFromAPI({required int id}) async {
     try {
       Response response =
           await http.get(Uri.parse("${API.photo_api}$id/photos"));
       if (response.statusCode == 200) {
+        //status code 200 means successfully fetched
         photoList = photosFromJson(response.body);
-        notifyListeners();
+        notifyListeners(); // Notify listeners of changes in data
       } else {
         error = response.statusCode.toString();
       }
     } catch (e) {
-      error = e.toString();
+      error = e.toString(); // Set error message
     }
-    isLoading = false;
+    isLoading = false; // Update isLoading flag
   }
 }
