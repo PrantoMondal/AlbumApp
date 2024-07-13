@@ -9,7 +9,6 @@ class PhotosProvider extends ChangeNotifier {
   bool isLoading = true;
   String error = '';
   PhotoList photoList = PhotoList(photos: []);
-  String searchText = '';
   getPhotoFromAPI({required int id}) async {
     try {
       Response response =
