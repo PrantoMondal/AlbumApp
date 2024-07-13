@@ -58,3 +58,40 @@ Navigate to the project directory and run the following command to install all d
 Run the following command in the terminal to start the app:
 
 `flutter run`
+
+Alternatively, you can use your IDE's built-in tools to run the application.
+
+## Project Structure
+
+A brief overview of the project structure:
+
+
+- **`features/home/`**: Contains the home screen and related logic.
+- **`features/photos/`**: Contains the photo screen and related logic.
+- **`models/`**: Contains data models used in the app.
+- **`main.dart`**: The entry point of the application.
+
+## Usage
+
+To use this application:
+
+1. Launch the app using the instructions above.
+2. Navigate through different screens using the provided UI elements.
+
+## Contributing
+
+To contribute to this project, follow these steps:
+
+1. Fork this repository.
+2. Create a branch: `git checkout -b <branch_name>`.
+3. Make your changes and commit them: `git commit -m '<commit_message>'`.
+4. Push to the original branch: `git push origin <branch_name>`.
+5. Create a pull request. Alternatively, see the GitHub documentation on creating a pull request.
+
+## Contact
+
+If you want to contact me, you can reach me at [your-email@example.com](mailto:your-email@example.com).
+
+## License
+
+This project uses the following license: MIT License.
