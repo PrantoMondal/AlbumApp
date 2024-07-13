@@ -15,7 +15,7 @@ Before you begin, ensure you have met the following requirements:
 
 ### 1. Clone the Repository
 Clone this repository to your local machine using the following command:
-`git clone https://github.com/your-username/your-repo-name.git`
+`git clone https://github.com/PrantoMondal/AlbumApp.git`
 `cd your-repo-name`
 
 
@@ -23,3 +23,38 @@ Clone this repository to your local machine using the following command:
 
 Navigate to the project directory and run the following command to install all dependencies:
 `flutter pub get`
+
+### 3. Set Up IDE
+
+#### Android Studio
+
+1. Open Android Studio.
+2. Select **Open an existing Android Studio project**.
+3. Navigate to the cloned project directory and open it.
+
+#### VS Code
+
+1. Open VS Code.
+2. Select **File > Open Folder**.
+3. Navigate to the cloned project directory and open it.
+
+### 4. Configure Emulators
+
+#### Android Emulator
+
+1. Open Android Studio.
+2. Go to **Tools > AVD Manager**.
+3. Create and start a new Android Virtual Device (AVD).
+
+#### iOS Simulator (macOS only)
+
+1. Open Xcode.
+2. Go to **Xcode > Preferences > Components**.
+3. Install the desired iOS simulator.
+
+
+### 5. Run the Application
+
+Run the following command in the terminal to start the app:
+
+`flutter run`
