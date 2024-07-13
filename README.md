@@ -15,13 +15,12 @@ Before you begin, ensure you have met the following requirements:
 
 ### 1. Clone the Repository
 Clone this repository to your local machine using the following command:
-```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+`git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name`
 
 
 ### 2. Install Dependencies
 
 Navigate to the project directory and run the following command to install all dependencies:
-```bash
-flutter pub get
+`
+flutter pub get`
