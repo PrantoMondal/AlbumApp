@@ -12,36 +12,20 @@ class DetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = Provider.of<PhotosProvider>(context);
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(125, 125, 209, 1.0),
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: const Color.fromRGBO(125, 125, 209, 1.0),
+        title: const Text(
+          "Details",
+          style: TextStyle(fontSize: 30),
+        ),
+      ),
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(
-                  width: 50,
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Icon(Icons.arrow_back_ios),
-                  ),
-                ),
-                const Text(
-                  "Details",
-                  style: TextStyle(fontSize: 30),
-                ),
-                const SizedBox(
-                  width: 50,
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
             Hero(
                 tag: "image",
                 child: Image.network(provider.photoList.photos[id].url)),

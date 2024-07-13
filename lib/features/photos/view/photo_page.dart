@@ -1,7 +1,6 @@
 import 'package:album_app/features/details/view/details_page.dart';
 import 'package:album_app/features/photos/providers/photos_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 
 class PhotoPage extends StatefulWidget {
@@ -25,7 +24,14 @@ class _PhotoPageState extends State<PhotoPage> {
   Widget build(BuildContext context) {
     final provider = Provider.of<PhotosProvider>(context);
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(125, 125, 209, 1.0),
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: const Color.fromRGBO(125, 125, 209, 1.0),
+        title: Text(
+          "Album Id: ${provider.photoList.photos[widget.id].albumId}",
+          style: const TextStyle(fontSize: 30),
+        ),
+      ),
       body: SafeArea(
         child: provider.isLoading
             ? const Center(
@@ -35,65 +41,35 @@ class _PhotoPageState extends State<PhotoPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SizedBox(
-                          width: 50,
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: const Icon(Icons.arrow_back_ios),
-                          ),
-                        ),
-                        Text(
-                          "Album Id: ${provider.photoList.photos[widget.id].albumId}",
-                          style: const TextStyle(fontSize: 30),
-                        ),
-                        const SizedBox(
-                          width: 50,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
                     Expanded(
-                      child: GridView.custom(
-                        gridDelegate: SliverWovenGridDelegate.count(
-                          crossAxisCount: 2,
-                          mainAxisSpacing: 8,
-                          crossAxisSpacing: 8,
-                          pattern: [
-                            const WovenGridTile(1),
-                            const WovenGridTile(
-                              5 / 7,
-                              crossAxisRatio: 0.9,
-                              alignment: AlignmentDirectional.centerEnd,
-                            ),
-                          ],
-                        ),
-                        childrenDelegate: SliverChildBuilderDelegate(
-                          childCount: provider.photoList.photos.length,
-                          (context, index) => GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => DetailsPage(
-                                        id: index,
-                                      ),
-                                    ));
-                              },
-                              child: Hero(
+                        child: ListView.builder(
+                      itemCount: provider.photoList.photos.length,
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => DetailsPage(
+                                      id: index,
+                                    ),
+                                  ));
+                            },
+                            child: ListTile(
+                              leading: Hero(
                                 tag: "image",
-                                child: Image.network(
-                                    provider.photoList.photos[index].url),
-                              )),
-                        ),
-                      ),
-                    )
+                                child: SizedBox(
+                                  height: 50,
+                                  width: 50,
+                                  child: Image.network(
+                                      provider.photoList.photos[index].url),
+                                ),
+                              ),
+                              title:
+                                  Text(provider.photoList.photos[index].title),
+                            ));
+                      },
+                    ))
                   ],
                 ),
               ),

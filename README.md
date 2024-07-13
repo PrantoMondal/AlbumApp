@@ -1,16 +1,27 @@
 # album_app
 
-A new Flutter project.
+## Overview
+This project is a Flutter application designed to fetch album from jsonplaceholder api, after fetching the album user can see the album images and image details. This README provides a setup guide for getting the project up and running on your local machine.
 
-## Getting Started
+## Prerequisites
+Before you begin, ensure you have met the following requirements:
 
-This project is a starting point for a Flutter application.
+- **Flutter SDK**: Install Flutter SDK from the [official website](https://flutter.dev/docs/get-started/install).
+- **Dart SDK**: Comes pre-installed with Flutter.
+- **Android Studio**: For Android development, download and install [Android Studio](https://developer.android.com/studio).
+- **Xcode**: For iOS development, install Xcode from the Mac App Store (macOS only).
 
-A few resources to get you started if this is your first Flutter project:
+## Setup Instructions
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### 1. Clone the Repository
+Clone this repository to your local machine using the following command:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+
+
+### 2. Install Dependencies
+
+Navigate to the project directory and run the following command to install all dependencies:
+
+flutter pub get
